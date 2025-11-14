@@ -6,9 +6,9 @@ export const metadata: Metadata = {
   description:
     'The first AI agent creation studio on Tetto. Transform ideas into deployable specifications and complete implementation guides.',
   icons: {
-    icon: '/icon.png',
-    shortcut: '/icon.png',
-    apple: '/icon.png',
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
   },
 };
 

@@ -11,7 +11,7 @@ export default function Home() {
       <nav className={styles.nav}>
         <div className={styles.navInner}>
           <div className={styles.logo}>
-            <Image src="/icon.png" alt="MotherNode" width={28} height={28} className={styles.treeIcon} />
+            <Image src="/icon.svg" alt="MotherNode" width={28} height={28} className={styles.treeIcon} />
             <span>MotherNode</span>
           </div>
           <div className={styles.navMenu}>
