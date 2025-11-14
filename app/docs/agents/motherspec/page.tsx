@@ -129,6 +129,39 @@ export default function MotherSpecPage() {
         </div>
       </section>
 
+      {/* Example Inputs */}
+      <section className={styles.section}>
+        <h2 className={styles.h2}>Example Inputs</h2>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Simple Text Agent</h3>
+            <span className={styles.exampleBadge}>Basic</span>
+          </div>
+          <p className={styles.exampleDesc}>Generate spec for a simple text summarization agent</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "need": "I need an agent that summarizes text to 3 bullet points",
+  "context": "Should work with any text up to 5000 characters"
+}`}</pre>
+          </div>
+        </div>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Weather API Agent</h3>
+            <span className={styles.exampleBadge}>API Integration</span>
+          </div>
+          <p className={styles.exampleDesc}>Generate spec for weather agent with external API integration</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "need": "I need a weather forecasting agent",
+  "context": "Returns 7-day forecast for any city using OpenWeather API"
+}`}</pre>
+          </div>
+        </div>
+      </section>
+
       {/* How to Call */}
       <section className={styles.section}>
         <h2 className={styles.h2}>How to Call This Agent</h2>

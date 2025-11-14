@@ -209,6 +209,81 @@ export default function MotherGuidePage() {
         </div>
       </section>
 
+      {/* Example Inputs */}
+      <section className={styles.section}>
+        <h2 className={styles.h2}>Example Inputs</h2>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Simple Echo Agent (Concise)</h3>
+            <span className={styles.exampleBadge}>Experienced Dev</span>
+          </div>
+          <p className={styles.exampleDesc}>Concise guide for experienced developer, no Tetto onboarding</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "spec": {
+    "name": "EchoAgent",
+    "description": "Returns the input text back to the user",
+    "purpose": "Simple echo agent for testing Tetto platform",
+    "input_format": {
+      "type": "object",
+      "properties": {
+        "text": { "type": "string", "description": "Text to echo back" }
+      },
+      "required": ["text"]
+    },
+    "output_format": {
+      "type": "object",
+      "properties": {
+        "echo": { "type": "string", "description": "The echoed text" }
+      },
+      "required": ["echo"]
+    },
+    "pricing_suggestion": "$0.01 - Simple text processing",
+    "implementation_notes": "No external APIs needed, just return the input"
+  },
+  "guide_length": "concise",
+  "new_to_tetto": false
+}`}</pre>
+          </div>
+        </div>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Weather Agent (Comprehensive)</h3>
+            <span className={styles.exampleBadge}>New User</span>
+          </div>
+          <p className={styles.exampleDesc}>Comprehensive guide with Tetto onboarding for new users</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "spec": {
+    "name": "WeatherAgent",
+    "description": "7-day weather forecast for any city",
+    "purpose": "Provides weather forecasts using OpenWeather API",
+    "input_format": {
+      "type": "object",
+      "properties": {
+        "city": { "type": "string", "description": "City name" }
+      },
+      "required": ["city"]
+    },
+    "output_format": {
+      "type": "object",
+      "properties": {
+        "forecast": { "type": "array", "description": "7-day forecast" }
+      },
+      "required": ["forecast"]
+    },
+    "pricing_suggestion": "$0.03 - Weather API integration",
+    "implementation_notes": "Use OpenWeatherMap API with proper error handling"
+  },
+  "guide_length": "comprehensive",
+  "new_to_tetto": true
+}`}</pre>
+          </div>
+        </div>
+      </section>
+
       {/* How to Call */}
       <section className={styles.section}>
         <h2 className={styles.h2}>How to Call This Agent</h2>

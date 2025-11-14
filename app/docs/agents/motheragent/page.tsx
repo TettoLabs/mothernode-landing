@@ -199,6 +199,49 @@ export default function MotherAgentPage() {
         </div>
       </section>
 
+      {/* Example Inputs */}
+      <section className={styles.section}>
+        <h2 className={styles.h2}>Example Inputs</h2>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Simple Echo Agent</h3>
+            <span className={styles.exampleBadge}>Experienced Dev</span>
+          </div>
+          <p className={styles.exampleDesc}>Quick end-to-end workflow for simple agent, no Tetto onboarding</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "need": "I need an echo agent that returns what you send it",
+  "context": "Simple testing agent, no external dependencies",
+  "new_to_tetto": false,
+  "guide_preferences": {
+    "length": "concise",
+    "audience": "experienced developer"
+  }
+}`}</pre>
+          </div>
+        </div>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Weather Forecasting Agent</h3>
+            <span className={styles.exampleBadge}>New User</span>
+          </div>
+          <p className={styles.exampleDesc}>Complete workflow with spec generation, guide creation, and Tetto setup</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "need": "I need a weather forecasting agent",
+  "context": "Returns 7-day forecast for any city using OpenWeather API",
+  "new_to_tetto": true,
+  "guide_preferences": {
+    "length": "standard",
+    "audience": "AI coding assistant"
+  }
+}`}</pre>
+          </div>
+        </div>
+      </section>
+
       {/* How to Call */}
       <section className={styles.section}>
         <h2 className={styles.h2}>How to Call This Agent</h2>
