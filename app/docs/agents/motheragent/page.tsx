@@ -107,6 +107,13 @@ export default function MotherAgentPage() {
       {/* Input Schema */}
       <section className={styles.section}>
         <h2 className={styles.h2}>Input Schema</h2>
+
+        <div className={styles.highlightBox}>
+          <p className={styles.highlightText}>
+            <strong>Simple by design:</strong> MotherAgent only accepts 4 parameters. It makes smart decisions internally about git setup, testing depth, and deployment options. <strong>Want full control?</strong> Use <Link href="/docs/agents/motherguide" className={styles.link}>MotherGuide</Link> directly with all 11 customization parameters.
+          </p>
+        </div>
+
         <div className={styles.codeBlock}>
           <pre>{`{
   "need": "string (required)",
@@ -116,7 +123,14 @@ export default function MotherAgentPage() {
     "length": "concise" | "standard" | "comprehensive" (default: comprehensive),
     "audience": "string (default: 'AI coding assistant')"
   }
-}`}</pre>
+}
+
+// What MotherAgent decides for you (hardcoded):
+// - include_git_setup: true
+// - include_vercel_setup: true
+// - include_testing: true
+// - testing_depth: 'thorough'
+// - include_deployment: true`}</pre>
         </div>
 
         <div className={styles.paramTable}>
