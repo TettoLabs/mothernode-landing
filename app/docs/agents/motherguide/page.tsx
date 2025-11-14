@@ -282,6 +282,138 @@ export default function MotherGuidePage() {
 }`}</pre>
           </div>
         </div>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Quick Prototype (Minimal Setup)</h3>
+            <span className={styles.exampleBadge}>Fast Start</span>
+          </div>
+          <p className={styles.exampleDesc}>Minimal guide for quick prototyping - just the code, skip git/deployment setup</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "spec": {
+    "name": "DataValidator",
+    "description": "Validates JSON data against custom rules",
+    "purpose": "Quick data validation agent for testing",
+    "input_format": {
+      "type": "object",
+      "properties": {
+        "data": { "type": "object", "description": "Data to validate" },
+        "rules": { "type": "array", "description": "Validation rules" }
+      },
+      "required": ["data", "rules"]
+    },
+    "output_format": {
+      "type": "object",
+      "properties": {
+        "valid": { "type": "boolean" },
+        "errors": { "type": "array" }
+      },
+      "required": ["valid", "errors"]
+    },
+    "pricing_suggestion": "$0.02 - Simple validation logic",
+    "implementation_notes": "Use JSON Schema or custom validation"
+  },
+  "guide_length": "concise",
+  "target_audience": "experienced developer",
+  "new_to_tetto": false,
+  "include_git_setup": false,
+  "include_vercel_setup": false,
+  "include_deployment": false,
+  "testing_depth": "basic"
+}`}</pre>
+          </div>
+        </div>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>Security Scanner (Enterprise)</h3>
+            <span className={styles.exampleBadge}>Complex</span>
+          </div>
+          <p className={styles.exampleDesc}>Comprehensive enterprise guide with thorough testing and full deployment pipeline</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "spec": {
+    "name": "CodeSecurityScanner",
+    "description": "OWASP Top 10 security vulnerability detection",
+    "purpose": "Enterprise-grade code security analysis with detailed reports",
+    "input_format": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "description": "Code to analyze" },
+        "language": { "type": "string", "enum": ["javascript", "python", "java"] },
+        "severity_threshold": { "type": "string", "enum": ["low", "medium", "high"] }
+      },
+      "required": ["code", "language"]
+    },
+    "output_format": {
+      "type": "object",
+      "properties": {
+        "vulnerabilities": { "type": "array" },
+        "security_score": { "type": "number" },
+        "recommendations": { "type": "array" }
+      },
+      "required": ["vulnerabilities", "security_score", "recommendations"]
+    },
+    "pricing_suggestion": "$0.15 - Complex analysis with AI reasoning",
+    "implementation_notes": "Use pattern matching + Claude for context analysis"
+  },
+  "guide_length": "comprehensive",
+  "target_audience": "development team",
+  "new_to_tetto": true,
+  "include_git_setup": true,
+  "include_vercel_setup": true,
+  "include_tetto_setup": true,
+  "testing_depth": "thorough",
+  "include_testing": true,
+  "include_deployment": true
+}`}</pre>
+          </div>
+        </div>
+
+        <div className={styles.exampleCard}>
+          <div className={styles.exampleHeader}>
+            <h3 className={styles.exampleTitle}>API Integration (Standard)</h3>
+            <span className={styles.exampleBadge}>Balanced</span>
+          </div>
+          <p className={styles.exampleDesc}>Standard guide with deployment focus, moderate testing depth</p>
+          <div className={styles.codeBlock}>
+            <pre>{`{
+  "spec": {
+    "name": "CryptoPrice",
+    "description": "Real-time cryptocurrency price aggregator",
+    "purpose": "Fetches current prices from multiple exchanges and returns average",
+    "input_format": {
+      "type": "object",
+      "properties": {
+        "symbol": { "type": "string", "description": "Crypto symbol (BTC, ETH, etc)" },
+        "currency": { "type": "string", "description": "Target currency (USD, EUR)" }
+      },
+      "required": ["symbol"]
+    },
+    "output_format": {
+      "type": "object",
+      "properties": {
+        "symbol": { "type": "string" },
+        "price_usd": { "type": "number" },
+        "sources": { "type": "array" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["symbol", "price_usd", "sources", "timestamp"]
+    },
+    "pricing_suggestion": "$0.04 - Multi-API aggregation with caching",
+    "implementation_notes": "Integrate CoinGecko + CoinMarketCap APIs with 60s cache"
+  },
+  "guide_length": "standard",
+  "target_audience": "intermediate developer",
+  "new_to_tetto": false,
+  "include_vercel_setup": true,
+  "include_git_setup": true,
+  "testing_depth": "thorough",
+  "include_deployment": true
+}`}</pre>
+          </div>
+        </div>
       </section>
 
       {/* How to Call */}
