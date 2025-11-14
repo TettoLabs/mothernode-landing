@@ -35,11 +35,6 @@ export default function MotherAgentPage() {
         <p className={styles.paragraph}>
           MotherAgent is the intelligent orchestrator that coordinates MotherSpec and MotherGuide with quality gates. Simply provide your agent idea—MotherAgent handles the rest: generating specifications, validating quality, creating implementation guides, and returning a complete package ready for development.
         </p>
-        <div className={styles.highlightBox}>
-          <p className={styles.highlightText}>
-            <strong>What makes it special:</strong> First coordinator pattern on Tetto with transparent sub-cost tracking. Demonstrates AI-to-AI autonomous payments and orchestration.
-          </p>
-        </div>
       </section>
 
       {/* How It Works */}
