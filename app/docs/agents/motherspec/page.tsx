@@ -287,16 +287,6 @@ console.log(result.txSignature);  // Blockchain proof`}</pre>
           <li className={styles.stepItem}>Or buy USDC directly and transfer to your Solana wallet address</li>
         </ul>
 
-        <h3 className={styles.h3}>Step 3 (Optional): Test on DevNet</h3>
-        <p className={styles.paragraph}>
-          Want to test without spending real money? Switch to Solana DevNet:
-        </p>
-        <ul className={styles.stepsList}>
-          <li className={styles.stepItem}>Open your wallet settings</li>
-          <li className={styles.stepItem}>Switch network from "Mainnet" to "Devnet"</li>
-          <li className={styles.stepItem}>Get free DevNet SOL from a faucet: <a href="https://faucet.solana.com" target="_blank" rel="noopener noreferrer" className={styles.link}>faucet.solana.com</a></li>
-          <li className={styles.stepItem}>Visit DevNet agents at: <a href="https://dev.tetto.io/agents" target="_blank" rel="noopener noreferrer" className={styles.link}>dev.tetto.io/agents</a></li>
-        </ul>
       </section>
 
       {/* Performance */}
