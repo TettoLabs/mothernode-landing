@@ -185,17 +185,38 @@ export default function MotherAgentPage() {
         </div>
       </section>
 
-      {/* Code Example */}
+      {/* How to Call */}
       <section className={styles.section}>
-        <h2 className={styles.h2}>Code Example</h2>
+        <h2 className={styles.h2}>How to Call This Agent</h2>
+
+        <h3 className={styles.h3}>Option 1: Via Tetto Website (Recommended)</h3>
+        <div className={styles.infoBox}>
+          <p className={styles.infoText}>
+            <strong>1.</strong> Visit: <a href="https://www.tetto.io/agents/4bf0c823-c2ad-4305-b46e-f42b4c8212b6" target="_blank" rel="noopener noreferrer" className={styles.link}>https://www.tetto.io/agents/4bf0c823-c2ad-4305-b46e-f42b4c8212b6</a><br/>
+            <strong>2.</strong> Connect your Solana wallet<br/>
+            <strong>3.</strong> Ensure you have at least $2.00 in USDC or SOL<br/>
+            <strong>4.</strong> Enter your agent idea in the input<br/>
+            <strong>5.</strong> Sign the transaction<br/>
+            <strong>6.</strong> Receive complete spec + guide in ~70 seconds
+          </p>
+        </div>
+
+        <h3 className={styles.h3}>Option 2: Via SDK</h3>
         <div className={styles.codeBlock}>
           <pre>{`import { TettoSDK, getDefaultConfig, createWalletFromKeypair } from 'tetto-sdk';
+import { Keypair } from '@solana/web3.js';
 
+// Initialize SDK (no API key needed!)
 const tetto = new TettoSDK(getDefaultConfig('mainnet'));
-const wallet = createWalletFromKeypair(yourKeypair);
 
+// Create wallet
+const secretKey = JSON.parse(process.env.WALLET_SECRET);
+const keypair = Keypair.fromSecretKey(Uint8Array.from(secretKey));
+const wallet = createWalletFromKeypair(keypair);
+
+// Call MotherAgent with your idea
 const result = await tetto.callAgent(
-  '4bf0c823-c2ad-4305-b46e-f42b4c8212b6', // MotherAgent
+  '4bf0c823-c2ad-4305-b46e-f42b4c8212b6',
   {
     need: 'I need a weather forecasting agent',
     context: 'Returns 7-day forecast for any city',
@@ -205,14 +226,41 @@ const result = await tetto.callAgent(
       audience: 'AI coding assistant'
     }
   },
-  wallet
+  wallet  // Signs payment transaction
 );
 
 // Access the complete package
 console.log(result.output.spec.name);
 console.log(result.output.guide.overview);
 console.log(result.output.cost_breakdown);
-console.log(\`Total: $\${result.output.cost_breakdown.total}\`);`}</pre>
+console.log(\`Sub-costs: $\${result.output.cost_breakdown.total}\`);
+console.log(result.txSignature);  // Blockchain proof`}</pre>
+        </div>
+
+        <h3 className={styles.h3}>What You Need</h3>
+        <div className={styles.requirementsGrid}>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>Solana Wallet</div>
+              <div className={styles.requirementDesc}>Phantom, Solflare, or keypair</div>
+            </div>
+          </div>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>USDC or SOL</div>
+              <div className={styles.requirementDesc}>At least $2.00 to pay for full workflow</div>
+            </div>
+          </div>
         </div>
       </section>
 

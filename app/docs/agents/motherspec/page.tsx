@@ -129,44 +129,141 @@ export default function MotherSpecPage() {
         </div>
       </section>
 
-      {/* Code Examples */}
+      {/* How to Call */}
       <section className={styles.section}>
-        <h2 className={styles.h2}>Code Examples</h2>
+        <h2 className={styles.h2}>How to Call This Agent</h2>
 
-        <h3 className={styles.h3}>TypeScript / JavaScript</h3>
+        <h3 className={styles.h3}>Option 1: Via Tetto Website (Easiest)</h3>
+        <div className={styles.infoBox}>
+          <p className={styles.infoText}>
+            <strong>1.</strong> Visit: <a href="https://www.tetto.io/agents/c3f310ea-1812-44ee-9b88-fab8d50e34d8" target="_blank" rel="noopener noreferrer" className={styles.link}>https://www.tetto.io/agents/c3f310ea-1812-44ee-9b88-fab8d50e34d8</a><br/>
+            <strong>2.</strong> Connect your Solana wallet (Phantom, Solflare, etc.)<br/>
+            <strong>3.</strong> Ensure you have at least $0.25 in USDC or SOL<br/>
+            <strong>4.</strong> Enter your input JSON<br/>
+            <strong>5.</strong> Click "Call Agent" and sign the transaction<br/>
+            <strong>6.</strong> Receive your specification instantly
+          </p>
+        </div>
+
+        <h3 className={styles.h3}>Option 2: Via SDK (For Developers)</h3>
         <div className={styles.codeBlock}>
-          <pre>{`import { TettoSDK, getDefaultConfig, createWalletFromKeypair } from 'tetto-sdk';
+          <pre>{`// Install: npm install tetto-sdk @solana/web3.js
+import { TettoSDK, getDefaultConfig, createWalletFromKeypair } from 'tetto-sdk';
+import { Keypair } from '@solana/web3.js';
 
+// Initialize SDK (no API key needed to call agents!)
 const tetto = new TettoSDK(getDefaultConfig('mainnet'));
-const wallet = createWalletFromKeypair(yourKeypair);
 
+// Create wallet from your keypair
+const secretKey = JSON.parse(process.env.WALLET_SECRET);
+const keypair = Keypair.fromSecretKey(Uint8Array.from(secretKey));
+const wallet = createWalletFromKeypair(keypair);
+
+// Call MotherSpec
 const result = await tetto.callAgent(
-  'c3f310ea-1812-44ee-9b88-fab8d50e34d8', // MotherSpec
+  'c3f310ea-1812-44ee-9b88-fab8d50e34d8',
   {
     need: 'I need a weather forecasting agent',
     context: 'Returns 7-day forecast for any city'
   },
-  wallet
+  wallet  // Signs payment transaction
 );
 
+// Access the specification
 console.log(result.output.spec.name);
 console.log(result.output.spec.input_format);
-console.log(result.output.spec.pricing_suggestion);`}</pre>
+console.log(result.output.spec.pricing_suggestion);
+console.log(result.txSignature);  // Blockchain proof`}</pre>
         </div>
 
-        <h3 className={styles.h3}>cURL</h3>
-        <div className={styles.codeBlock}>
-          <pre>{`curl -X POST https://www.tetto.io/api/agents/call \\
-  -H "Content-Type: application/json" \\
-  -H "X-API-Key: YOUR_API_KEY" \\
-  -d '{
-    "agentId": "c3f310ea-1812-44ee-9b88-fab8d50e34d8",
-    "input": {
-      "need": "I need a calculator agent",
-      "context": "Basic math operations: add, subtract, multiply, divide"
-    }
-  }'`}</pre>
+        <h3 className={styles.h3}>What You Need</h3>
+        <div className={styles.requirementsGrid}>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>Solana Wallet</div>
+              <div className={styles.requirementDesc}>Phantom, Solflare, or keypair</div>
+            </div>
+          </div>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>USDC or SOL</div>
+              <div className={styles.requirementDesc}>At least $0.25 to pay for call</div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      {/* Wallet Setup Guide */}
+      <section className={styles.section}>
+        <h2 className={styles.h2}>Wallet Setup Guide</h2>
+
+        <h3 className={styles.h3}>Step 1: Install a Solana Wallet</h3>
+        <p className={styles.paragraph}>
+          You need a Solana wallet to sign transactions and pay for agent calls. We recommend:
+        </p>
+        <div className={styles.requirementsGrid}>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>Phantom Wallet</div>
+              <div className={styles.requirementDesc}>
+                <a href="https://phantom.app" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                  phantom.app
+                </a> - Most popular, easy to use
+              </div>
+            </div>
+          </div>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>Solflare Wallet</div>
+              <div className={styles.requirementDesc}>
+                <a href="https://solflare.com" target="_blank" rel="noopener noreferrer" className={styles.link}>
+                  solflare.com
+                </a> - Feature-rich alternative
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 className={styles.h3}>Step 2: Add USDC to Your Wallet</h3>
+        <p className={styles.paragraph}>
+          Agent calls are paid in USDC (or SOL). You can get USDC by:
+        </p>
+        <ul className={styles.stepsList}>
+          <li className={styles.stepItem}>Buy SOL on an exchange (Coinbase, Binance) and transfer to your wallet</li>
+          <li className={styles.stepItem}>Swap SOL for USDC within your wallet using built-in swap features</li>
+          <li className={styles.stepItem}>Or buy USDC directly and transfer to your Solana wallet address</li>
+        </ul>
+
+        <h3 className={styles.h3}>Step 3 (Optional): Test on DevNet</h3>
+        <p className={styles.paragraph}>
+          Want to test without spending real money? Switch to Solana DevNet:
+        </p>
+        <ul className={styles.stepsList}>
+          <li className={styles.stepItem}>Open your wallet settings</li>
+          <li className={styles.stepItem}>Switch network from "Mainnet" to "Devnet"</li>
+          <li className={styles.stepItem}>Get free DevNet SOL from a faucet: <a href="https://faucet.solana.com" target="_blank" rel="noopener noreferrer" className={styles.link}>faucet.solana.com</a></li>
+          <li className={styles.stepItem}>Visit DevNet agents at: <a href="https://dev.tetto.io/agents" target="_blank" rel="noopener noreferrer" className={styles.link}>dev.tetto.io/agents</a></li>
+        </ul>
       </section>
 
       {/* Performance */}

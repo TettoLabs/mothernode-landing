@@ -209,38 +209,98 @@ export default function MotherGuidePage() {
         </div>
       </section>
 
-      {/* Code Example */}
+      {/* How to Call */}
       <section className={styles.section}>
-        <h2 className={styles.h2}>Code Example</h2>
+        <h2 className={styles.h2}>How to Call This Agent</h2>
+
+        <h3 className={styles.h3}>Option 1: Via Tetto Website</h3>
+        <div className={styles.infoBox}>
+          <p className={styles.infoText}>
+            <strong>1.</strong> Visit: <a href="https://www.tetto.io/agents/aa9a758c-7410-4f58-8ae7-c33f905dd2a4" target="_blank" rel="noopener noreferrer" className={styles.link}>https://www.tetto.io/agents/aa9a758c-7410-4f58-8ae7-c33f905dd2a4</a><br/>
+            <strong>2.</strong> Connect your Solana wallet<br/>
+            <strong>3.</strong> Ensure you have at least $0.75 in USDC or SOL<br/>
+            <strong>4.</strong> Provide your specification (from MotherSpec or manually created)<br/>
+            <strong>5.</strong> Sign the transaction<br/>
+            <strong>6.</strong> Receive your complete implementation guide
+          </p>
+        </div>
+
+        <h3 className={styles.h3}>Option 2: Via SDK</h3>
         <div className={styles.codeBlock}>
           <pre>{`import { TettoSDK, getDefaultConfig, createWalletFromKeypair } from 'tetto-sdk';
+import { Keypair } from '@solana/web3.js';
 
+// Initialize SDK (no API key needed!)
 const tetto = new TettoSDK(getDefaultConfig('mainnet'));
-const wallet = createWalletFromKeypair(yourKeypair);
+
+// Create wallet
+const secretKey = JSON.parse(process.env.WALLET_SECRET);
+const keypair = Keypair.fromSecretKey(Uint8Array.from(secretKey));
+const wallet = createWalletFromKeypair(keypair);
 
 // Specification (from MotherSpec or manual)
 const spec = {
   name: 'WeatherAgent',
   description: 'Returns 7-day weather forecasts',
-  purpose: '...',
-  input_format: { /* schema */ },
-  output_format: { /* schema */ },
-  pricing_suggestion: '$0.03 - Weather API integration'
+  purpose: 'Detailed weather forecasting...',
+  input_format: { /* JSON Schema */ },
+  output_format: { /* JSON Schema */ },
+  pricing_suggestion: '$0.03 - Weather API integration',
+  implementation_notes: 'Use OpenWeatherMap API...'
 };
 
+// Call MotherGuide
 const result = await tetto.callAgent(
-  'aa9a758c-7410-4f58-8ae7-c33f905dd2a4', // MotherGuide
+  'aa9a758c-7410-4f58-8ae7-c33f905dd2a4',
   {
     spec: spec,
     new_to_tetto: true,
-    guide_length: 'standard'
+    guide_length: 'comprehensive'
   },
   wallet
 );
 
+// Access the guide
 console.log(result.output.guide.overview);
 console.log(result.output.guide.implementation_steps);
 console.log(result.output.guide.estimated_time);`}</pre>
+        </div>
+
+        <h3 className={styles.h3}>What You Need</h3>
+        <div className={styles.requirementsGrid}>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>Solana Wallet</div>
+              <div className={styles.requirementDesc}>Phantom, Solflare, or keypair</div>
+            </div>
+          </div>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>USDC or SOL</div>
+              <div className={styles.requirementDesc}>At least $0.75 to pay for call</div>
+            </div>
+          </div>
+          <div className={styles.requirement}>
+            <div className={styles.requirementIcon}>
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <div>
+              <div className={styles.requirementTitle}>Agent Specification</div>
+              <div className={styles.requirementDesc}>From MotherSpec or manually created</div>
+            </div>
+          </div>
         </div>
       </section>
 
