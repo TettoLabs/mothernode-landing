@@ -26,7 +26,7 @@ export default function MotherAgentPage() {
         <span className={styles.badgeGreen}>$2.00 / call</span>
         <span className={styles.badgeBlue}>~70s response</span>
         <span className={styles.badgeOrange}>Coordinator</span>
-        <span className={styles.badgeGray}>AI-to-AI</span>
+        <span className={styles.badgePurple}>AI-to-AI</span>
       </div>
 
       {/* Overview */}
